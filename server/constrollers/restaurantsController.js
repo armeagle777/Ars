@@ -30,10 +30,33 @@ const createRestaurant = async (req,res)=>{
         return res.json({message: 'Check sent data and try again'})
     }
 }
+const updateReastaurantById = async (req,res)=>{
+    const {ratings,feedback} = req.body
+    try{
+        const restaurantId = req.params.id
+        const restaurant = await Restaurant.findById(restaurantId)
+        if(!restaurant){
+            return res.status(403).json({message: 'Restaurant not found'})
+        }
+            if(ratings){
+                await restaurant.updateOne({$push: {ratings:ratings}})
+            }else if(feedback){
+                await restaurant.updateOne({$push: {feedbacks:{text:feedback.text, updated:feedback.updated}}})
+            }
+        
+        const updatedRestaurant = await Restaurant.findById(restaurantId)
+        return res.status(200).json(updatedRestaurant)
 
+
+    }catch(err){
+        console.log(err)
+    }
+
+}
 
 module.exports ={
     getAllRestaurants,
     getRestaurantById,
-    createRestaurant
+    createRestaurant,
+    updateReastaurantById
 }

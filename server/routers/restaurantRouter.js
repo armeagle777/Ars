@@ -4,6 +4,7 @@ const restaurantsController =  require('../constrollers/restaurantsController')
 router.get('/',restaurantsController.getAllRestaurants)
 router.get('/:id', restaurantsController.getRestaurantById)
 router.post('/',restaurantsController.createRestaurant)
+router.patch('/:id', restaurantsController.updateReastaurantById)
 
 
 

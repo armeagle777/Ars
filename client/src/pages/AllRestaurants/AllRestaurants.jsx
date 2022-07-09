@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 export default function AllRestaurants() {
   const [allRes, setAllRes] = useState([]);
 
+
+  
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts').then((res) =>
-      res.json().then((data) => setAllRes(data))
-    );
+    fetch('http://localhost:9000/restaurants').then( res => res.json()).then( data => setAllRes(data.data))
+
   }, []);
   console.log(allRes);
   return (
@@ -14,8 +15,8 @@ export default function AllRestaurants() {
       <h1>All Restaurants</h1>
       {allRes.map((item) => {
         return (
-          <Link key={item.id} to={`/all/${item.id}`}>
-            <li>{item.title}</li>
+          <Link key={item._id} to={`/all/${item._id}`}>
+            <li>{item.name}</li>
           </Link>
         );
       })}
