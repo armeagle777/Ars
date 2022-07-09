@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+import { useReducer } from 'react';
+import { reducer, initialeState, State } from './state/state';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AllRestaurants from './pages/AllRestaurants/AllRestaurants';
+import Restaurant from './pages/Restaurant/Restaurant';
 import './App.css';
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialeState);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <State.Provider value={{ state, dispatch }}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/all" element={<AllRestaurants />} />
+          <Route path="all/:id" element={<Restaurant />} />
+        </Routes>
+      </BrowserRouter>
+    </State.Provider>
   );
 }
 
