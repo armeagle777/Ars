@@ -5,17 +5,21 @@ import AllRestaurants from './pages/AllRestaurants/AllRestaurants';
 import Restaurant from './pages/Restaurant/Restaurant';
 import CreateRestaurant from './components/CreateRestaurant'
 import './App.css';
+import  AppBar  from './components/AppBar';
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialeState);
   return (
     <State.Provider value={{ state, dispatch }}>
       <BrowserRouter>
-        <Routes>
-          <Route path='/' index element={<CreateRestaurant />} />
-          <Route path="/all" element={<AllRestaurants />} />
-          <Route path="all/:id" element={<Restaurant />} />
-        </Routes>
+        <div>
+          <AppBar />
+          <Routes>
+            <Route path="/" element={<AllRestaurants />} />
+            <Route path='/new' index element={<CreateRestaurant />} />
+            <Route path="/:id" element={<Restaurant />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </State.Provider>
   );

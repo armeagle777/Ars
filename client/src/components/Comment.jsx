@@ -1,5 +1,5 @@
 import React from 'react'
-import { Divider, Avatar, Grid, Paper } from "@material-ui/core";
+import { Divider, Grid } from "@material-ui/core";
 import { format } from 'timeago.js';
 export default function Comment({comment}) {
   return (
