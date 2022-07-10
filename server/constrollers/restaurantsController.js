@@ -54,9 +54,21 @@ const updateReastaurantById = async (req,res)=>{
 
 }
 
+const deleteReastaurantById = async (req,res)=>{
+    try{
+        const restaurantId = req.params.id
+        const deletedRestaurant = await Restaurant.findByIdAndDelete(restaurantId)
+        return res.status(200).json(deletedRestaurant)
+    }catch(err){
+        console.log(err)
+    }
+
+}
+
 module.exports ={
     getAllRestaurants,
     getRestaurantById,
     createRestaurant,
-    updateReastaurantById
+    updateReastaurantById,
+    deleteReastaurantById
 }

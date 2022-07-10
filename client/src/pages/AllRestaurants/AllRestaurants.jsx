@@ -22,7 +22,6 @@ export default function AllRestaurants() {
     fetch('http://localhost:9000/restaurants').then( res => res.json()).then( data => setAllRes(data.data))
 
   }, []);
-  console.log(allRes);
   return (
     <div>      
       <h1>All Restaurants</h1>
