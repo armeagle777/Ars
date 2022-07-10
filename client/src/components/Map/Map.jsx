@@ -39,5 +39,5 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 }
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyDuhtLlBrFJNko_uT8onXawQW9UmXHMjZU'
+    apiKey: 'AIzaSyAIEZynEY9zBY5OJnBljHdE6kbA8FiXFQs'
   })(MapContainer)
